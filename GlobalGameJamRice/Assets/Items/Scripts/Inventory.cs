@@ -13,11 +13,15 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        ShootRaycast();
         Scroll();
         if (Input.GetKey(KeyCode.E))
         {
             UseItem();
+        }
+
+        if (Input.GetKey(KeyCode.F))
+        {
+            ShootRaycast();
         }
     }
 
