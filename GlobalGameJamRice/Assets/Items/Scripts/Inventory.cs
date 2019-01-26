@@ -72,7 +72,10 @@ public class Inventory : MonoBehaviour
 
     void UseItem()
     {
-        GetSelectedSlotItem().Use();
+        if (GetSelectedSlotItem() != null)
+        {
+            GetSelectedSlotItem().Use();
+        }
     }
 
     Item GetSelectedSlotItem()

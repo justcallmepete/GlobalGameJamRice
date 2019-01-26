@@ -7,7 +7,7 @@ public class Test_Item : Item
 
     public override void Use()
     {
-
+        Debug.Log("PEW PEW");
     }
 
 }
