@@ -1179,7 +1179,9 @@ ModelImporter:
     401170: transform2
     401172: transform3
     401174: transform4
-    2100000: lambert1
+    2100000: lambert4
+    2100002: lambert2
+    2100004: lambert3
     2300000: pCone1
     2300002: pCube11
     2300004: pCube13

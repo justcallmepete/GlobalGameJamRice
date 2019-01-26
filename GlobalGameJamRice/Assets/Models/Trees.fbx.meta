@@ -13,7 +13,8 @@ ModelImporter:
     400004: pCylinder3
     400006: pCylinder4
     400008: //RootNode
-    2100000: lambert1
+    2100000: lambert2
+    2100002: lambert3
     2300000: pCylinder1
     2300002: pCylinder2
     2300004: pCylinder3
