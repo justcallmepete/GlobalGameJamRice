@@ -22,7 +22,6 @@ public class ShootingArrows : MonoBehaviour
         }
         if (stock == 0 && Input.GetKeyDown(KeyCode.R)) {
             StartCoroutine("Reload");
-            stock = 1;
         }
 }
     
@@ -38,7 +37,7 @@ public class ShootingArrows : MonoBehaviour
     IEnumerator Reload()
     {
         yield return new WaitForSeconds(2);
-       
+        stock = 1;
         yield return null;
     }
 }
