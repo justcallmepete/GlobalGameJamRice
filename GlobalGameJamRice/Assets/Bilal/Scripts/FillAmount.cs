@@ -14,7 +14,7 @@ public class FillAmount : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(cooldown.fillAmount);
+        //Debug.Log(cooldown.fillAmount);
         
             //Reduce fill amount over 30 seconds
             cooldown.fillAmount = player.GetComponent<Hunger>().hungerBar/100;

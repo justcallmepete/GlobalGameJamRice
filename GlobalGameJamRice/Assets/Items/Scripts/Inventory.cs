@@ -10,13 +10,15 @@ public class Inventory : MonoBehaviour
     public Slot[] slots;
     public int selectedSlot;
     Slot emptySlot;
+    public GameObject planks;
 
     void Update()
     {
         Scroll();
         if (Input.GetKey(KeyCode.E))
         {
-            UseItem();
+            //UseItem();
+            ActivateBridge();
         }
 
         if (Input.GetKey(KeyCode.F))
@@ -47,6 +49,25 @@ public class Inventory : MonoBehaviour
             if (hit.transform.GetComponent<Lock>())
             {
                 hit.transform.GetComponent<Lock>().Unlock(GetSelectedSlotItem().name);
+            }
+        }
+    }
+    void ActivateBridge()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log("Hit: " + hit);
+            if (hit.transform.tag == "Plank")
+            {
+                planks.SetActive(true);
+            }
+            if (hit.transform.GetComponent<Lock>())
+            {
+                planks.SetActive(true);
+                hit.transform.GetComponent<Lock>().Unlock(GetSelectedSlotItem().name);
+                
             }
         }
     }

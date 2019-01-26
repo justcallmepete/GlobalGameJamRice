@@ -31,11 +31,12 @@ public class ShootingArrows : MonoBehaviour
     void Shoot()
     {
         Rigidbody clone;
-        clone = Instantiate(arrow, transform.position + new Vector3(0,0.2f,0), transform.rotation);
+        clone = Instantiate(arrow, transform.position + new Vector3(0,0.2f,0), Quaternion.LookRotation(transform.position) * transform.rotation);
         clone.velocity = transform.TransformDirection(Vector3.forward * 50);
         arrowShot.Play();
         bowStringReady.SetActive(true);
         bowstringNotReady.SetActive(false);
+
         stock--;
     }
     IEnumerator Reload()

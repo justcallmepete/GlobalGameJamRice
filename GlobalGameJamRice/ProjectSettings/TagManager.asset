@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ladder
-  tags:
   - ladder
+  - Bolt
+  - Plank
   layers:
   - Default
   - TransparentFX
