@@ -14,6 +14,11 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         ShootRaycast();
+        Scroll();
+        if (Input.GetKey(KeyCode.E))
+        {
+            UseItem();
+        }
     }
 
     //input for the cursor
@@ -38,21 +43,49 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    Slot GetSelectedSlot()
+    void Scroll()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            if (selectedSlot < slots.Length)
+            {
+                selectedSlot++;
+            }
+            else
+            {
+                selectedSlot = 0;
+            }
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            if (selectedSlot > 0)
+            {
+                selectedSlot--;
+            }
+            else
+            {
+                selectedSlot = slots.Length;
+            }
+        }
+    }
+
+    void UseItem()
+    {
+        GetSelectedSlotItem().Use();
+    }
+
+    Item GetSelectedSlotItem()
     {
         if (selectedSlot < slots.Length && selectedSlot >=0)
         {
             if (slots[selectedSlot].isTaken)
             {
-                return slots[selectedSlot];
+                return slots[selectedSlot].item;
             }
-            return emptySlot;
         }
-        else
-        {
-            Debug.Log("Can't select this slot");
-            return emptySlot;
-        }
+        Debug.Log("There's no item in this slot or this slot doesn't exist");
+        return null;
     }
 
     void AddItem(Item obj)
