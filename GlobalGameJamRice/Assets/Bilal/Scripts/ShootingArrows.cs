@@ -9,6 +9,8 @@ public class ShootingArrows : MonoBehaviour
     AudioSource arrowShot;
     public float speed = 2f;
     public int stock = 1;
+    public GameObject bowStringReady;
+    public GameObject bowstringNotReady;
 
     private void Start()
     {
@@ -32,12 +34,16 @@ public class ShootingArrows : MonoBehaviour
         clone = Instantiate(arrow, transform.position + new Vector3(0,0.2f,0), transform.rotation);
         clone.velocity = transform.TransformDirection(Vector3.forward * 50);
         arrowShot.Play();
+        bowStringReady.SetActive(true);
+        bowstringNotReady.SetActive(false);
         stock--;
     }
     IEnumerator Reload()
     {
         yield return new WaitForSeconds(2);
         stock = 1;
+        bowStringReady.SetActive(false);
+        bowstringNotReady.SetActive(true);
         yield return null;
     }
 }

@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FillAmount : MonoBehaviour {
-
+  
     public Image cooldown;
     public GameObject player;
-    public bool coolingDown;
-    public float waitTime = 30.0f;
     private void Start()
     {
         player.GetComponent<Hunger>();       

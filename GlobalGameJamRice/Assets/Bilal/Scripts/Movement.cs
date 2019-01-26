@@ -12,18 +12,19 @@ public class Movement : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
-    public bool stamOn;
+    public bool onLadder = false;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
 
      
-        gameObject.transform.position = new Vector3(0, 5, 0);
     }
 
     void Update()
     {
-        if (controller.isGrounded)
+
+        if (controller.isGrounded && !onLadder)
         {
          
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -38,16 +39,21 @@ public class Movement : MonoBehaviour
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection = moveDirection * speed;
             }
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpSpeed;
-            }
+            
         }
-
+        if (Input.GetKey(KeyCode.W) && onLadder)
+        {
+           transform.Translate(0, Time.deltaTime, 0, Space.World);
+        }
+        if (Input.GetKey(KeyCode.S) && onLadder)
+        {
+            transform.Translate(0, Time.deltaTime, 0, Space.World);
+        }   
 
         moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
 
      
         controller.Move(moveDirection * Time.deltaTime);
     }
+   
 }
