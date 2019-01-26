@@ -8,11 +8,15 @@ public class Inventory : MonoBehaviour
     public Transform holder;
 	public List<Item> playerInventory = new List<Item>();
     public Slot[] slots;
+    public int selectedSlot;
+    Slot emptySlot;
 
     void Update()
     {
         ShootRaycast();
     }
+
+    //input for the cursor
 
     void OnDrawGizmos()
     {
@@ -31,6 +35,23 @@ public class Inventory : MonoBehaviour
             {
                AddItem(hit.transform.GetComponent<Pickuppable>().Pickup());
             }
+        }
+    }
+
+    Slot GetSelectedSlot()
+    {
+        if (selectedSlot < slots.Length && selectedSlot >=0)
+        {
+            if (slots[selectedSlot].isTaken)
+            {
+                return slots[selectedSlot];
+            }
+            return emptySlot;
+        }
+        else
+        {
+            Debug.Log("Can't select this slot");
+            return emptySlot;
         }
     }
 
