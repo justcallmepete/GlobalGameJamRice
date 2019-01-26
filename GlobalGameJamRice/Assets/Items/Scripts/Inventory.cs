@@ -44,6 +44,10 @@ public class Inventory : MonoBehaviour
             {
                AddItem(hit.transform.GetComponent<Pickuppable>().Pickup());
             }
+            if (hit.transform.GetComponent<Lock>())
+            {
+                hit.transform.GetComponent<Lock>().Unlock(GetSelectedSlotItem().name);
+            }
         }
     }
 
