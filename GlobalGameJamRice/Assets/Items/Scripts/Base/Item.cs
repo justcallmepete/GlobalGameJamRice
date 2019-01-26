@@ -7,6 +7,7 @@ public class Item : MonoBehaviour {
 	// pickuppable
     //torch, can, gas canister, pan, Christmas lights, platenspeler, radio, 
     public Sprite sprite;
+
     public Vector3 positionInHands;
 
 
